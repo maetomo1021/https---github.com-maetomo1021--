@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/omake.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>ITの色々ツールサイト</h1>
+            <p>ようこそ、 {{ username }}さん!</p>
+            <nav>
+                <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="container">
+            <section class="projects">
+                <h2>私の作品一覧</h2>
+                <div class="project-list">
+                    <div class="project-item">
+                        <h3>プロジェクト1 jsの連打ゲーム</h3>
+                        <p>一定時間内に何回クリックをできるかのテストゲームです。js動作環境確認</p>
+                        <a href="{{ url_for('game') }}" class="btn">ゲームをプレイ</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>プロジェクト2 現在地の天気情報取得</h3>
+                        <p>アクセスした端末の位置情報を取得して、現在地を元に天気を調べられるようにしました。。</p>
+                        <a href="{{ url_for('weather') }}" class="btn">現在地の天気を調べる</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>プロジェクト3 写真OCR</h3>
+                        <p>写真を投げるとcsvファイルに変換してくれます。</p>
+                        <a href="{{ url_for('ocr') }}" class="btn">OCR機能を使う</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>プロジェクト4 3Dモデル読み込み</h3>
+                        <p>3Dモデル読み込み、操作</p>
+                        <a href="{{ url_for('ocr') }}" class="btn">3jsページに行く</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>プロジェクト5 簡易電卓</h3>
+                        <p>簡易電卓</p>
+                        <a href="{{ url_for('calculator') }}" class="btn">ページに移る</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>プロジェクト6</h3>
+                        <p>プロジェクト6の簡単な説明がここに入ります。ツールの説明や利用法について紹介します。</p>
+                        <a href="{{ url_for('game') }}" class="btn">ゲームをプレイ</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>プロジェクト6</h3>
+                        <p>プロジェクト6の簡単な説明がここに入ります。ツールの説明や利用法について紹介します。</p>
+                        <a href="{{ url_for('game') }}" class="btn">ゲームをプレイ</a>
+                    </div>
+                    <!-- 追加のプロジェクトアイテム -->
+                </div>
+            </section>
+        </div>
+
+        <div class ="h3-wrapper">
+            <h3 class="return container ">
+                <a href="./">ホームに戻る</a>
+            </h3>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ITの便利ツールサイト</p>
+        </div>
+    </footer>
+</body>
+
+</html>

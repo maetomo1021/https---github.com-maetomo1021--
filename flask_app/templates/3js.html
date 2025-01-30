@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/weather.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+    <script src="{{ url_for('static', filename='js/weather.js') }}" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>3js</h1>
+    </header>
+    <main>
+        <div id="weather-container">
+            <p>天気を調べます。</p>
+            <div id="map"></div>
+            <div id="weather-info"></div>
+        </div>
+    </main>
+
+    <div class="return">
+        <h3>
+            <a href="{{ url_for('omake') }}" class="btn btn-secondary">おまけページに戻る</a>
+        </h3>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Simple Game</p>
+    </footer>
+</body>
+
+</html>

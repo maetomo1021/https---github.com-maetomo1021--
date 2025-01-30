@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー登録</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>新規登録</h1>
+        </div>
+    </header>
+
+    <main class="main-wrap">
+        <div class="content-wrapper">
+            <form method="POST" class="form-container">
+                <div class="form-control">
+                    <label for="username">ユーザー名:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-control">
+                    <label for="password">パスワード:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">登録</button>
+            </form>
+        </div>
+
+        <p class="text-center">
+            既にアカウントをお持ちですか？ 
+            <a href="{{ url_for('login') }}"class ="login-link">ログインはこちら</a>
+        </p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ITの便利ツールサイト</p>
+        </div>
+    </footer>
+</body>
+
+</html>

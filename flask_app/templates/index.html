@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Index.css') }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>飲食店共有サイト</h1>
+            <p>ようこそ、 {{ username }}さん!</p>
+        </div>
+    </header>
+
+    <main class="main-wrap">
+        <div class="h3-wrapper">
+            <nav class="global-nav">
+                <ul>
+                    <li><a href="#" data-target="content1" class="nav-link active">飲食店</a></li>
+                    <!-- <li><a href="#" data-target="content2" class="nav-link">音楽</a></li>
+                    <li><a href="#" data-target="content3" class="nav-link">aaa</a></li> -->
+                </ul>
+            </nav>
+
+            <div class="content-area">
+                <!-- Content 1: アイテムのリスト -->
+                <div class="content-item active" data-content="content1">
+                    <div class="content-wrapper">
+                        <div class="text-content">
+                            <h2>飲食店まとめ</h2>
+                            <p>ここにaaaの内容を表示します。</p>
+                            <ul id="item-list">
+                                {% for item in items %}
+                                <li data-item-id="{{ item.id }}">
+                                    店名：<strong>{{ item.name }}</strong>
+                                    <p>場所: {{ item.location }}</p>
+                                    <p>リンク: <a href="{{ item.link }}" target="_blank">{{ item.link }}</a></p>
+                                    <!-- 削除ボタンを追加 -->
+                                    <button class="delete-item-btn" data-item-id="{{ item.id }}">削除</button>
+                                    <button class="edit-item-btn" data-item-id="{{ item.id }}">編集</button>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <!-- 編集モーダル -->
+                            <div id="edit-modal" class="modal" style="display: none;">
+                                <div class="modal-content">
+                                    <h3>アイテムを編集</h3>
+                                    <input type="hidden" id="edit-item-id">
+                                    <input type="text" id="edit-item-name" placeholder="店名" required>
+                                    <input type="text" id="edit-item-location" placeholder="場所" required>
+                                    <input type="url" id="edit-item-link" placeholder="リンク" required>
+                                    <button id="save-edit-btn" class="save-btn">保存</button>
+                                    <button id="close-edit-modal-btn" class="close-btn">キャンセル</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div>
+                            <!-- 追加ボタン -->
+                            <div class="action-buttons">
+                                <input type="text" id="new-item-name" placeholder="店名" required>
+                                <input type="text" id="new-item-location" placeholder="場所" required>
+                                <input type="url" id="new-item-link" placeholder="リンク" required>
+                                <button id="add-item-btn" class="add-btn">アイテムを追加</button>
+                            </div>
+
+                            <!-- アイテムを共有ボタン -->
+                            <div class="action-buttons share-action">
+                                <button id="share-item-btn" class="share-btn">アイテムを共有</button>
+                            </div>
+
+                            <div id="share-modal" class="modal" style="display: none;">
+                                <div class="modal-content">
+                                    <h3>共有方法を選択してください</h3>
+                                    <button id="share-discord-btn" class="share-option">Discordで共有</button>
+                                    <button id="share-gmail-btn" class="share-option">Gmailで共有</button>
+                                    <button id="close-modal-btn" class="close-btn">キャンセル</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ITの便利ツールサイト</p>
+        </div>
+        <nav>
+            <a href="{{ url_for('omake') }}" class="btn btn-secondary">おまけページ</a>
+            <br>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+        </nav>
+    </footer>
+</body>
+
+</html>

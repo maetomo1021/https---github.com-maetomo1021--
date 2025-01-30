@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Game</title>
+    <link rel="stylesheet" href="/static/css/game.css">
+    <script src="/static/js/game.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>シンプルなゲーム</h1>
+    </header>
+    <main>
+        <div id="game-container">
+            <p>10秒以内に何回クリックできるか挑戦しましょう！</p>
+            <button id="click-button" disabled>クリック</button>
+            <p>得点: <span id="score">0</span></p>
+            <p>残り時間: <span id="time">10</span>秒</p>
+            <button id="start-button">ゲーム開始</button>
+        </div>
+    </main>
+
+    <div class="return">
+        <h3>
+            <a href="{{ url_for('omake') }}" class="btn btn-secondary">おまけページに戻る</a>
+        </h3>
+    </div>
+    <footer>
+        <p>&copy; 2024 Simple Game</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Index.css') }}">
+    <script src="/static/js/index.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>IT便利サイト</h1>
+            <p>ようこそ、 {{ username }}さん!</p>
+        </div>
+    </header>
+
+    <main class="main-wrap">
+        <div class="h3-wrapper">
+            <nav class="global-nav">
+                <ul>
+                    <li><a href="#" data-target="content1" class="nav-link active">aaa</a></li>
+                    <li><a href="#" data-target="content2" class="nav-link">bbb</a></li>
+                    <li><a href="#" data-target="content3" class="nav-link">ccc</a></li>
+                </ul>
+            </nav>
+
+            <div class="content-area">
+                <div class="content-item active" data-content="content1">
+                    <div class="content-wrapper">
+                        <div class="text-content">
+                            <h2>Content 1</h2>
+                            <p>ここにaaaの内容を表示します。</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="share-btn">シェアする</button>
+                            <button class="add-btn" data-content="content1">追加する</button>
+                            <button class="delete-btn" data-content="content1">削除する</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-item" data-content="content2">
+                    <div class="content-wrapper">
+                        <div class="text-content">
+                            <h2>Content 2</h2>
+                            <p>ここにbbbの内容を表示します。</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="share-btn">シェアする</button>
+                            <button class="add-btn" data-content="content2">追加する</button>
+                            <button class="delete-btn" data-content="content2">削除する</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-item" data-content="content3">
+                    <div class="content-wrapper">
+                        <div class="text-content">
+                            <h2>Content 3</h2>
+                            <p>ここにcccの内容を表示します。</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="share-btn">シェアする</button>
+                            <button class="add-btn" data-content="content3">追加する</button>
+                            <button class="delete-btn" data-content="content3">削除する</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <h3 class="return container">
+        <a href="{{ url_for('omake') }}" class="btn btn-secondary">おまけ</a>
+        <a href="./">ホームに戻る</a>
+    </h3>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ITの便利ツールサイト</p>
+        </div>
+        <nav>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+        </nav>
+    </footer>
+
+</body>
+
+</html>
