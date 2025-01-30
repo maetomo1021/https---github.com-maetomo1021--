@@ -15,6 +15,16 @@
             <h1>飲食店共有サイト</h1>
             <p>ようこそ、 {{ username }}さん!</p>
         </div>
+        <style>
+            .item-lists {
+                margin: 1rem;
+                background: #e9ecef;
+                border-radius: 8px;
+                padding: 1rem;
+                flex: 1 1 calc(50% - 1rem);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+        </style>
     </header>
 
     <main class="main-wrap">
@@ -32,11 +42,11 @@
                 <div class="content-item active" data-content="content1">
                     <div class="content-wrapper">
                         <div class="text-content">
-                            <h2>飲食店まとめ</h2>
-                            <p>ここにaaaの内容を表示します。</p>
+                            <h2>飲食店情報まとめ</h2>
+                            <p>ここに飲食店の内容を表示します。</p>
                             <ul id="item-list">
                                 {% for item in items %}
-                                <li data-item-id="{{ item.id }}">
+                                <li data-item-id="{{ item.id }}" class="item-lists">
                                     店名：<strong>{{ item.name }}</strong>
                                     <p>場所: {{ item.location }}</p>
                                     <p>リンク: <a href="{{ item.link }}" target="_blank">{{ item.link }}</a></p>

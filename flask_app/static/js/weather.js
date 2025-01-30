@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .bindPopup('ここにいます！')
             .openPopup();
 
-        // 3秒間処理を停止
-        sleep(3000).then(() => fetchWeatherData(lat, lon));
+        // 5秒間処理を停止
+        sleep(5000).then(() => fetchWeatherData(lat, lon));
     }
 
     function fetchWeatherData(lat, lon) {

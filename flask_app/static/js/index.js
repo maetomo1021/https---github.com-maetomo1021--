@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (response.ok) {
                 alert("アイテムが更新されました！");
                 // ページをリロードして最新データを取得
-                location.reload();
+                window.location.reload();
             } else {
                 alert(`エラー: ${data.message}`);
             }
@@ -151,7 +151,7 @@ document.getElementById("share-discord-btn").addEventListener("click", function 
         return `店名: ${name}, 場所: ${location}, リンク: ${link}`;
     });
     const message = encodeURIComponent(items.join("\n"));
-    const discordUrl = `https://discord.com/channels/@me?message=${message}`;
+    const discordUrl = `https://discord.com/channels/775975352073060353/1034696952333488188=${message}`;
     window.open(discordUrl, "_blank");
 });
 
