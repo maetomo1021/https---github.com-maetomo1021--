@@ -37,7 +37,7 @@
                 </ul>
             </nav>
 
-            <div class="content-area">
+            <div class="content-area">ｚ
                 <!-- Content 1: アイテムのリスト -->
                 <div class="content-item active" data-content="content1">
                     <div class="content-wrapper">
@@ -102,6 +102,22 @@
         </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js"></script>
+    <script>
+        async function runPython() {
+            TOKEN = "MTMzNTI3NjM4NDU1MzAwOTI0NA.Gzvrhh.A0cWeTXJOTmzQcisu_dvVaG2eic_kdcEoRiLy4" 
+            CHANNEL_ID = 1335258050747174942
+            
+            let pyodide = await loadPyodide();
+            let result = pyodide.runPython(`
+                def add(a, b):
+                    return a + b
+                add(5, 3)
+            `);
+            console.log("Python の結果:", result);
+        }
+        runPython();
+    </script>
 
     <footer>
         <div class="container">

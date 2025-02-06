@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2024-01-17T00:00:00.000Z" agent="Mozilla/5.0" version="21.6.6" etag="your-etag">
+  <diagram name="シーケンス図" id="sequence-diagram">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Actors and Objects -->
+        <mxCell id="2" value="Teacher" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="3" value="Web UI" style="html=1;dropTarget=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="4" value="Schedule&#xa;Service" style="html=1;dropTarget=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="5" value="Database" style="html=1;dropTarget=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Lifelines -->
+        <mxCell id="6" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="72.5" y="130" width="5" height="290" as="geometry" />
+        </mxCell>
+
+        <mxCell id="7" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="217.5" y="130" width="5" height="290" as="geometry" />
+        </mxCell>
+
+        <mxCell id="8" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="417.5" y="130" width="5" height="290" as="geometry" />
+        </mxCell>
+
+        <mxCell id="9" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="617.5" y="130" width="5" height="290" as="geometry" />
+        </mxCell>
+
+        <!-- Messages -->
+        <mxCell id="10" value="1: createSchedule()" style="html=1;verticalAlign=bottom;startArrow=oval;endArrow=block;startSize=8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="77.5" y="160" as="sourcePoint" />
+            <mxPoint x="217.5" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="11" value="2: validateInput()" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="222.5" y="180" as="sourcePoint" />
+            <mxPoint x="417.5" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="12" value="3: checkConflicts()" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="422.5" y="200" as="sourcePoint" />
+            <mxPoint x="617.5" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="13" value="4: return conflicts" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="617.5" y="240" as="sourcePoint" />
+            <mxPoint x="422.5" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="14" value="5: saveSchedule()" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="422.5" y="280" as="sourcePoint" />
+            <mxPoint x="617.5" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="15" value="6: return success" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="617.5" y="320" as="sourcePoint" />
+            <mxPoint x="77.5" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Activation Boxes -->
+        <mxCell id="16" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="217.5" y="160" width="5" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="17" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="417.5" y="180" width="5" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="18" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="617.5" y="200" width="5" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile> 

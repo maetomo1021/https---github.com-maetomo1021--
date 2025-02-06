@@ -80,6 +80,11 @@ header h1 {
     text-decoration: underline;
 }
 
-.li #item-list,ul{
-   list-style: none;
-} 
+.item-lists {
+    margin: 1rem;
+    background: #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 1 1 calc(50% - 1rem);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

@@ -142,17 +142,17 @@ document.getElementById("close-modal-btn").addEventListener("click", function ()
     document.getElementById("share-modal").style.display = "none";
 });
 
-// Discordで共有
-document.getElementById("share-discord-btn").addEventListener("click", function () {
-    const items = Array.from(document.querySelectorAll("#item-list li")).map(item => {
-        const name = item.querySelector("strong").innerText;
-        const location = item.querySelector("p:nth-of-type(1)").innerText.replace("場所: ", "");
-        const link = item.querySelector("a").getAttribute("href");
-        return `店名: ${name}, 場所: ${location}, リンク: ${link}`;
-    });
-    const message = encodeURIComponent(items.join("\n"));
-    const discordUrl = `https://discord.com/channels/775975352073060353/1034696952333488188=${message}`;
-    window.open(discordUrl, "_blank");
+// Discordで共有及びJsonデータ整理
+document.getElementById("share-discord-btn").addEventListener("click", function() {
+    fetch("/run_discord_bot", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => alert("エラーが発生しました: " + error));
 });
 
 // Gmailで共有

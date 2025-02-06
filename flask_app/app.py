@@ -6,6 +6,9 @@ from flask_sqlalchemy import SQLAlchemy,session
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db,Item
 import requests
+import discord
+import asyncio
+import subprocess
 
 app = Flask(__name__)
 app.secret_key = 'maetomo1021-secret'
@@ -194,29 +197,29 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
+###########BOTの操作変編～～～～～～～～～～～～～～～～～
+@app.route('/run_discord_bot', methods=['POST'])
+@login_required
+def run_discord_bot():
+    try:
+        # bot.py をバックグラウンドで実行
+        subprocess.Popen(["python", "bot.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return jsonify({"status": "success", "message": "Discord Botを起動しました"}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"エラー: {e}"}), 500
 
-@app.route("/share_discord", methods=["POST"])
-def share_discord():
-    data = request.json
-    if not data:
-        return jsonify({"message": "データがありません"}), 400
+@app.route('/send_json_to_discord', methods=['POST'])
+def send_json_to_discord():
+    try:
+        data = request.json  # HTMLから送られてきたJSONデータ
+        json_str = json.dumps(data, ensure_ascii=False, indent=2)  # 日本語対応
 
-    message_content = f"**店名:** {data['店名']}\n**場所:** {data['場所']}\n**リンク:** {data['リンク']}"
-
-    headers = {
-        "Authorization": f"Bot {MTMzNTI3NjM4NDU1MzAwOTI0NA.Gzvrhh.A0cWeTXJOTmzQcisu_dvVaG2eic_kdcEoRiLy4}",
-        "Content-Type": "application/json"
-    }
-
-    payload = {"content": message_content}
-
-    response = requests.post(930382753676001320, json=payload, headers=headers)
-
-    if response.status_code in [200, 201]:
-        return jsonify({"message": "Discordに送信しました"})
-    else:
-        return jsonify({"message": "送信に失敗しました", "error": response.text}), 500
-
+        # JSON を bot.py に渡して起動
+        subprocess.Popen(["python", "bot.py", json_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        return jsonify({"status": "success", "message": "JSONをDiscordに送信しました"}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"エラー: {e}"}), 500
 
 
 if __name__ == '__main__':
