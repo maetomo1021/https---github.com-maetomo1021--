@@ -10,6 +10,7 @@ import discord
 import asyncio
 import subprocess
 
+
 app = Flask(__name__)
 app.secret_key = 'maetomo1021-secret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
