@@ -5,6 +5,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from flask_sqlalchemy import SQLAlchemy,session
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db,Item
+from bs4 import BeautifulSoup
 import requests
 import discord
 import asyncio
@@ -56,6 +57,8 @@ app.config['MAIL_USERNAME'] = 'maetomoda@gmail.com'
 app.config['MAIL_PASSWORD'] = 'vktnjqzobcojryxj'
 
 
+
+#######
 @app.route('/')
 @login_required
 def index():

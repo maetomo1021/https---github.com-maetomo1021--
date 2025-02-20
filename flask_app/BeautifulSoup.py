@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import csv
+
 url = "https://www.jcb.co.jp/voucher/gift-card/merchant.html"
 response = requests.get(url)
 
