@@ -6,15 +6,23 @@ from flask_sqlalchemy import SQLAlchemy,session
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db,Item
 from bs4 import BeautifulSoup
+from PIL import Image
+from flask_cors import CORS
 import requests
 import discord
 import asyncio
 import subprocess
+import pytesseract
+import easyocr
+import io
+reader = easyocr.Reader(['ja', 'en'])  # 日本語と英語に対応
 
+import io
 
 app = Flask(__name__)
 app.secret_key = 'maetomo1021-secret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+CORS(app)
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
@@ -73,6 +81,34 @@ def omake():
 def ocr():
     return render_template('ocr.html')
 
+@app.route('/process_ocr', methods=['POST'])
+def process_ocr():
+    try:
+        # 画像がアップロードされているか確認
+        if 'image' not in request.files:
+            return jsonify({'error': 'No file part'}), 400
+        
+        file = request.files['image']
+        if file.filename == '':
+            return jsonify({'error': 'No selected file'}), 400
+        
+        # 画像ファイルをメモリ上で読み込む
+        img_bytes = file.read()
+        image = Image.open(io.BytesIO(img_bytes))
+
+        # OCR処理
+        result = reader.readtext(image)
+        extracted_text = '\n'.join([item[1] for item in result])  # OCR結果のテキストを抽出
+
+        # OCR結果をJSON形式で返す
+        return jsonify({'text': extracted_text})
+    
+    except Exception as e:
+        # エラーの詳細をログに出力
+        error_message = f"Error: {str(e)}\n{traceback.format_exc()}"
+        print(error_message)  # サーバーログにエラーメッセージを出力
+        return jsonify({'error': error_message}), 500  # エラー内容をJSONで返す
+    
 @app.route('/calculator')
 def calculator():
     return render_template('calculator.html')
@@ -85,7 +121,17 @@ def game():
 def weather():
     return render_template('weather.html')
 
+@app.route('/js3')
+def js3():
+    return render_template('3js.html')
 
+
+@app.route('/receive', methods=['POST'])
+def receive():
+    data = request.json
+    key = data.get("key", "")
+    print(f"Received key: {key}")
+    return {"status": "OK"}, 200
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -226,5 +272,8 @@ def send_json_to_discord():
         return jsonify({"status": "error", "message": f"エラー: {e}"}), 500
 
 
+# if __name__ == '__main__':
+#     app.run(host='127.0.0.1', port=5800,debug=True)
+    
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5800)
+    app.run(host='0.0.0.0', port=5000,debug=True)
