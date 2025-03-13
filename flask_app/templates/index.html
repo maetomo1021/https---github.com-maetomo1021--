@@ -17,7 +17,8 @@
         </div>
         <style>
             .item-lists {
-                margin: 1rem;
+                width: auto;
+                margin: 0.5rem;
                 background: #e9ecef;
                 border-radius: 8px;
                 padding: 1rem;
@@ -42,7 +43,7 @@
                         <div class="text-content">
                             <h2>飲食店情報まとめ</h2>
                             <!-- <p>ここに飲食店の内容を表示します。</p> -->
-                            <ul id="item-list">
+                            <ul id="item-list" >
                                 {% for item in items %}
                                 <li data-item-id="{{ item.id }}" class="item-lists">
                                     店名：<strong>{{ item.name }}</strong>
